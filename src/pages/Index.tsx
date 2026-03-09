@@ -83,33 +83,23 @@ const sections = [
 ];
 
 const Index = () => (
-  <div className="min-h-screen bg-background relative overflow-hidden">
-    {/* Background ambient glow */}
-    <div className="pointer-events-none fixed inset-0">
-      <div className="absolute -top-40 -left-40 h-80 w-80 rounded-full bg-primary/5 blur-3xl animate-pulse-glow" />
-      <div className="absolute -bottom-40 -right-40 h-96 w-96 rounded-full bg-accent/5 blur-3xl animate-pulse-glow" style={{ animationDelay: '1.5s' }} />
-    </div>
-
-    {/* Header */}
+  <div className="min-h-screen bg-background">
+    {/* Header — azul marino */}
     <motion.header
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      className="relative z-10 border-b border-border/50"
+      className="bg-primary shadow-md"
     >
-      <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-4">
+      <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-3">
         <div className="flex items-center gap-4">
-          <div className="relative">
-            <div className="absolute inset-0 rounded-xl bg-primary/20 blur-md" />
-            <div className="relative flex h-10 w-10 items-center justify-center rounded-xl bg-primary">
-              <Zap className="h-5 w-5 text-primary-foreground" strokeWidth={2.5} />
-            </div>
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-accent shadow-sm">
+            <Zap className="h-5 w-5 text-accent-foreground" strokeWidth={2.5} />
           </div>
           <div>
-            <h1 className="font-heading text-lg font-bold tracking-tight text-foreground">
-              PERSAL <span className="text-primary">SI</span>
+            <h1 className="font-heading text-lg font-bold tracking-tight text-primary-foreground">
+              PERSAL <span className="text-accent">SI</span>
             </h1>
-            <p className="text-[11px] font-medium text-muted-foreground tracking-wide">
+            <p className="text-[11px] font-medium text-primary-foreground/70 tracking-wide">
               All in One 4.0 — Manufacturing Solutions
             </p>
           </div>
@@ -118,27 +108,31 @@ const Index = () => (
       </div>
     </motion.header>
 
+    {/* Accent bar */}
+    <div className="h-1 bg-accent" />
+
     {/* Main */}
-    <main className="relative z-10 mx-auto max-w-[1400px] space-y-10 px-6 py-8">
+    <main className="mx-auto max-w-[1400px] space-y-9 px-6 py-8">
       {sections.map((section, i) => (
         <MenuSection key={section.title} title={section.title} items={section.items} index={i} />
       ))}
     </main>
 
     {/* Footer */}
-    <footer className="relative z-10 border-t border-border/50 mt-8">
-      <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-4">
+    <footer className="bg-primary mt-6">
+      <div className="h-1 bg-accent" />
+      <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-3">
         <div className="flex items-center gap-3">
-          <div className="h-2 w-2 rounded-full bg-primary animate-pulse-glow" />
+          <div className="h-2 w-2 rounded-full bg-accent" />
           <div>
-            <p className="font-heading text-xs font-bold text-foreground">MRS</p>
-            <p className="text-[10px] text-muted-foreground">Analista Int. Sistemas</p>
+            <p className="font-heading text-xs font-bold text-primary-foreground">MRS</p>
+            <p className="text-[10px] text-primary-foreground/60">Analista Int. Sistemas</p>
           </div>
         </div>
-        <p className="hidden text-[11px] italic text-muted-foreground sm:block">
+        <p className="hidden text-[11px] italic text-primary-foreground/60 sm:block">
           "En Persal la colaboración eres tú y soy yo."
         </p>
-        <p className="text-[10px] font-medium text-muted-foreground">v2.0.0.91</p>
+        <p className="text-[10px] font-medium text-primary-foreground/60">v2.0.0.91</p>
       </div>
     </footer>
   </div>
