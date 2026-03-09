@@ -8,19 +8,19 @@ const kpis = [
 ];
 
 const KpiBar = () => (
-  <div className="flex flex-wrap gap-3">
+  <div className="flex flex-wrap gap-2">
     {kpis.map((kpi, i) => (
       <motion.div
         key={kpi.label}
-        initial={{ opacity: 0, y: -8 }}
+        initial={{ opacity: 0, y: -6 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.3 + i * 0.1 }}
-        className={`${kpi.colorClass} flex items-center gap-2.5 rounded-lg px-4 py-2 shadow-sm`}
+        transition={{ delay: 0.3 + i * 0.08 }}
+        className={`${kpi.colorClass} flex items-center gap-2 rounded-md px-3 py-1.5`}
       >
-        <kpi.icon className="h-4 w-4 opacity-90" />
+        <kpi.icon className="h-3.5 w-3.5 opacity-90" />
         <div>
-          <p className="text-[9px] font-semibold uppercase tracking-wider opacity-80">{kpi.label}</p>
-          <p className="font-heading text-lg font-bold leading-none">{kpi.value}</p>
+          <p className="text-[8px] font-semibold uppercase tracking-wider opacity-80">{kpi.label}</p>
+          <p className="font-heading text-base font-bold leading-none">{kpi.value}</p>
         </div>
       </motion.div>
     ))}

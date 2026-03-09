@@ -2,25 +2,27 @@ import { LucideIcon } from "lucide-react";
 import MenuCard from "./MenuCard";
 import { motion } from "framer-motion";
 
-interface MenuItem { icon: LucideIcon; label: string; }
-interface MenuSectionProps { title: string; items: MenuItem[]; index: number; }
+interface MenuItem { icon: LucideIcon; label: string; description?: string; }
+interface MenuSectionProps { title: string; items: MenuItem[]; id: string; }
 
-const MenuSection = ({ title, items, index }: MenuSectionProps) => (
+const MenuSection = ({ title, items, id }: MenuSectionProps) => (
   <motion.section
-    initial={{ opacity: 0, y: 16 }}
+    id={id}
+    initial={{ opacity: 0, y: 12 }}
     animate={{ opacity: 1, y: 0 }}
-    transition={{ delay: 0.1 + index * 0.07, duration: 0.35 }}
+    transition={{ duration: 0.3 }}
+    className="scroll-mt-20"
   >
-    <div className="mb-4 flex items-center gap-3">
-      <div className="h-1 w-1 rounded-full bg-accent" />
-      <h2 className="font-heading text-xs font-bold uppercase tracking-[0.15em] text-primary">
+    <div className="mb-3 flex items-center gap-3">
+      <div className="h-1.5 w-1.5 rounded-full bg-accent" />
+      <h2 className="font-heading text-sm font-bold text-primary">
         {title}
       </h2>
       <div className="h-px flex-1 bg-border" />
     </div>
-    <div className="grid grid-cols-3 gap-2.5 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 xl:grid-cols-8">
+    <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
       {items.map((item, i) => (
-        <MenuCard key={item.label} icon={item.icon} label={item.label} index={i} />
+        <MenuCard key={item.label} icon={item.icon} label={item.label} description={item.description} index={i} />
       ))}
     </div>
   </motion.section>
